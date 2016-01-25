@@ -145,3 +145,7 @@ post '/admin' do
 	end
 	
 end
+
+get '/showusers' do
+  erb "Вывод всех пользователей"
+end
