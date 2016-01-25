@@ -3,6 +3,22 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'pony'
+require 'sqlite3'
+
+configure do
+	@db = SQLite3::Database.new 'barbershop.db'
+	@db.execute 'CREATE  TABLE IF NOT EXISTS
+		"Users"
+		(
+			"id" INTEGER PRIMARY KEY  AUTOINCREMENT  UNIQUE,
+			"username" TEXT,
+			"phone" TEXT,
+			"datestamp" TEXT,
+			"barber" TEXT,
+			"color" TEXT
+		)'
+	
+end	
 
 get '/' do
 	erb "Здравствуйте! Добро пожаловать на сайт нашей парикмахерской \"Burber Shop\". Для записи перейдите по <a href=\"/visit\">ссылке</a>."
