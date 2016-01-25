@@ -26,7 +26,7 @@ configure do
 end	
 
 get '/' do
-	erb "Здравствуйте! Добро пожаловать на сайт нашей парикмахерской \"Burber Shop\". Для записи перейдите по <a href=\"/visit\">ссылке</a>."
+	erb "Здравствуйте! Добро пожаловать на сайт парикмахерской \"Burber Shop\". Для записи перейдите по <a href=\"/visit\">ссылке</a>."
 end
 
 get '/visit' do
@@ -147,5 +147,5 @@ post '/admin' do
 end
 
 get '/showusers' do
-  erb "Вывод всех пользователей"
+	erb :showusers
 end

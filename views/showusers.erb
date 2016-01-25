@@ -1,0 +1,10 @@
+<h3>Список записавшихся клиентов</h3>
+
+<div>
+	<pre>
+	<% db = get_db %>
+	<% db.execute 'SELECT * FROM Users ORDER BY Id DESC' do |row| %>
+		<%= "#{row['id']} - #{row['datestamp']} #{row['username']} записан(а) к #{row['barber']}, цвет #{row['color']}" %>
+	<% end %>
+	</pre>
+</div>
