@@ -156,5 +156,7 @@ post '/admin' do
 end
 
 get '/showusers' do
+	db = get_db
+	@results = db.execute 'SELECT * FROM Users ORDER BY Id DESC'
 	erb :showusers
 end

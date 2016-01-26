@@ -1,10 +1,25 @@
 <h3>Список записавшихся клиентов</h3>
 
+<pre><%= @results %></pre>
+
 <div>
-	<pre>
-	<% db = get_db %>
-	<% db.execute 'SELECT * FROM Users ORDER BY Id DESC' do |row| %>
-		<%= "#{row['id']} - #{row['datestamp']} #{row['username']} записан(а) к #{row['barber']}, цвет #{row['color']}" %>
+<table class="table table-hover">
+	<% @results.each do |row| %>
+		<tr>
+  			<td><%= row['datestamp'] %></td>
+  			<td><%= row['barber'] %></td>
+  			<td><%= row['username'] %></td>
+  			<td><%= row['phone'] %></td>
+  			<td><%= row['color'] %></td>
+  		</tr>
 	<% end %>
-	</pre>
+</table>
+
 </div>
+
+<pre>
+<% db = get_db %>
+<% db.execute 'SELECT * FROM Users ORDER BY Id DESC' do |row| %>
+	<%= "#{row['id']} - #{row['datestamp']} #{row['username']} записан(а) к #{row['barber']}, цвет #{row['color']}" %>
+<% end %>
+</pre>
