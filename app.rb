@@ -23,6 +23,15 @@ configure do
 			"barber" TEXT,
 			"color" TEXT
 		)'
+	db.execute 'CREATE  TABLE IF NOT EXISTS
+		"Barbers"
+		(
+			"id" INTEGER PRIMARY KEY  AUTOINCREMENT  UNIQUE,
+			"barber" TEXT UNIQUE
+		)'
+	db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Walter White']
+	db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Jessie Pinkman']
+	db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Gus Fring']
 end	
 
 get '/' do
@@ -42,7 +51,7 @@ post '/visit' do
 	
 	hh = { :client_name => "Введите имя", 
 		   :client_phone => "Введите телефон",
-		   :client_date => "Введите дату и время" }
+		   :client_date => "Выберите дату и время" }
 
 #	hh.each do |key,value|
 #		if params[key] == ''

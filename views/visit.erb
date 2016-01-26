@@ -34,10 +34,11 @@
   <div class="form-group">  
     <label>Выберите парикмахера</label>
     <select name="barber" class="form-control">
-     <option <%= @barber == 'Walter White' ? 'selected' : '' %>>Walter White</option>
-  	 <option <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %>>Jessie Pinkman</option>
-  	 <option <%= @barber == 'Gus Fring' ? 'selected' : '' %>>Gus Fring</option>
-    </select>
+      <% db = get_db %>
+      <% db.execute 'SELECT * FROM Barbers' do |row| %>
+        <option <%= @barber == row['barber'] ? 'selected' : '' %>><%= "#{row['barber']}" %></option>
+      <% end %>
+      </select>
   </div>
 
   <div class="form-group">
