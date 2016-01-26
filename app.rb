@@ -40,6 +40,11 @@ configure do
 	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Mike Ehrmantra']
 end	
 
+# before do
+# 	db = get_db
+# 	@barbers = db.execute 'SELECT * FROM Barbers'
+# end	
+
 get '/' do
 	erb "Здравствуйте! Добро пожаловать на сайт парикмахерской \"Burber Shop\". Для записи перейдите по <a href=\"/visit\">ссылке</a>."
 end
@@ -71,10 +76,6 @@ post '/visit' do
 	if @error != ''
 		return erb :visit
 	end
-
-#	f = File.open "./public/users.txt", "a"
-#	f.write "User: #{@client_name}, Phone: #{@client_phone}, Date and time: #{@client_date}, Barber: #{@barber}, Color: #{@color}<br />\n"
-#	f.close
 	
 	db = get_db
 	db.execute 'INSERT INTO
