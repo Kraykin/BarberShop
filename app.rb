@@ -29,9 +29,15 @@ configure do
 			"id" INTEGER PRIMARY KEY  AUTOINCREMENT  UNIQUE,
 			"barber" TEXT UNIQUE
 		)'
-	db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Walter White']
-	db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Jessie Pinkman']
-	db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Gus Fring']
+	barbers = ['Walter White', 'Jessie Pinkman', 'Gus Fring', 'Mike Ehrmantra']
+	barbers.each do |barber|
+		db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', barber
+	end
+
+	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Walter White']
+	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Jessie Pinkman']
+	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Gus Fring']
+	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Mike Ehrmantra']
 end	
 
 get '/' do
