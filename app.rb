@@ -35,9 +35,6 @@ configure do
 	end
 
 	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Walter White']
-	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Jessie Pinkman']
-	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Gus Fring']
-	# db.execute 'INSERT OR IGNORE INTO Barbers ( barber ) VALUES ( ? )', ['Mike Ehrmantra']
 end	
 
 # before do
